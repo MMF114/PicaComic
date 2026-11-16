@@ -33,6 +33,12 @@ jobs:
           printf 'storePassword=pica123456\nkeyPassword=pica123456\nkeyAlias=pica\nstoreFile=upload.jks\n' > ../key.properties
           cat ../key.properties
 
+      - name: Install CMake 3.10.2
+        run: |
+          yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" \
+            --install "cmake;3.10.2.4988404" || true
+          ls "$ANDROID_HOME/cmake"
+
       - name: Build
         run: |
           flutter pub get
